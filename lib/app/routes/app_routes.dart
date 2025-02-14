@@ -6,4 +6,11 @@ class Routes {
   static const PRODUCT = '/product';
   // ignore: constant_identifier_names
   static const PRODUCT_DETAILS = '/product-details';
+
+  static const CART = '/cart';
+
+  static const CHECKOUT = '/checkout';
+
+
+
   }

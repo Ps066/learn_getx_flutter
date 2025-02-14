@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:learn_getx/app/modules/products/controllers/cart_controller.dart';
 import 'package:learn_getx/app/modules/products/views/product_view.dart';
 import 'package:learn_getx/app/routes/app_pages.dart';
-import 'package:learn_getx/home.dart';
 
 void main() {
+  Get.put(CartController());
   runApp(const MyApp());
 }
 
