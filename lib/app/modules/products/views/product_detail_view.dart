@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:learn_getx/app/modules/products/controllers/cart_controller.dart';
+import 'package:learn_getx/app/modules/products/controllers/product_controller.dart';
 import 'package:learn_getx/app/modules/products/models/product_model.dart';
 
 class ProductDetailView extends StatelessWidget {
   final CartController cartController = Get.find<CartController>();
+  final ProductController productController = Get.find<ProductController>();
 
   @override
   Widget build(BuildContext context) {

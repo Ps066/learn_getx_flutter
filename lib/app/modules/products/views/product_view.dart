@@ -7,7 +7,7 @@ class Productviews extends StatelessWidget {
   //* IMPORTANT
   // before we process we are creating an instance of our controller class 
   // get.put() method is used to build the instance of the class
-  final ProductController productController = Get.put(ProductController());
+  final ProductController productController = Get.find<ProductController>();
   // Get.put() creates an object (an instance) of the class and stores it for global access throughout your app.
 
   //* IMPORTANT

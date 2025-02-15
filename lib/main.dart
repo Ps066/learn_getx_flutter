@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:learn_getx/app/modules/products/controllers/cart_controller.dart';
+import 'package:learn_getx/app/bindings/product_binding.dart';
 import 'package:learn_getx/app/modules/products/views/product_view.dart';
 import 'package:learn_getx/app/routes/app_pages.dart';
 
 void main() {
-  Get.put(CartController());
   runApp(const MyApp());
 }
 
@@ -23,6 +22,7 @@ class MyApp extends StatelessWidget {
       themeMode: ThemeMode.system,  // Default to system theme (optional)
       home: Productviews(),
       getPages: AppPages.routes,
+      initialBinding: ProductBinding(),
     );
   }
 }
