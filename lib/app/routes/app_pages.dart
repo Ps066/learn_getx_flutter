@@ -12,17 +12,17 @@ class AppPages {
   static final routes = [
     GetPage(
       name: Routes.PRODUCT,
-      page: () => Productviews(),
+      page: () => ProductView(),
       binding: ProductBinding()
     ),
     GetPage(
       name: Routes.PRODUCT_DETAILS,
-      page: () => ProductDetailView()
+      page: () => ProductDetailView(),
+      binding: CartBinding(),
     ),
     GetPage(
       name: Routes.CART,
       page: ()=> CartView(),
-      binding: CartBinding(),
     ),
     GetPage(
       name: Routes.CHECKOUT,

@@ -26,13 +26,13 @@ class ProductDetailView extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(product.name, style: const TextStyle(fontSize: 24),),
+            Text(product.title, style: const TextStyle(fontSize: 24),),
             const SizedBox(height: 10,),
             Text('\$${product.price.toString()}', style: const TextStyle(fontSize: 24),),
             const SizedBox(height: 20,),
             ElevatedButton(onPressed: (){
               cartController.addToCart(product);
-              Get.snackbar('Added to Cart', '${product.name} added to cart');
+              Get.snackbar('Added to Cart', '${product.title} added to cart');
             }, child: const Text("Add to Cart"))
           ],
         ),

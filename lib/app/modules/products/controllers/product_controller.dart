@@ -1,25 +1,40 @@
 import 'package:get/get.dart';
 import 'package:learn_getx/app/modules/products/models/product_model.dart';
+import 'package:learn_getx/app/services/product_service.dart';
 
 class ProductController extends GetxController{
-  // please note that adding .obs at the end of any variable leads to the formation of a reactive observabal variable.
+  ProductController({required this.productService}); // constructor 
 
-  var products = <ProductModel>[].obs;
+  final ProductService productService;
+
+  // please note that adding .obs at the end of any variable leads to the formation of a reactive observabal variable.
+  var productList = <ProductModel>[].obs;
+
+  // error and loading obs
+  var errMessage = ''.obs;
+  var isLoading = false.obs;
 
   // TODO: create an overriding function for the oninit
   @override     //* we are overriding because this is a built in method in getxController class
   void onInit(){ //* explained in lines after 33
-    products.addAll([    //* we have decided to load all our default products while the controller is created
-      ProductModel(name: 'iphone', price: 70000),   //* sample list element of type <ProductModel>
-      ProductModel(name: 's25 ultra', price: 150000),
-      ProductModel(name: 'rtx 5090', price: 250000),
-    ]);
     super.onInit();   //! super.onInit() loads the default config of the parent class see below in comments line 57
+    fetchProducts();
   }
   //* addAll() is a built-in method of the Dart List class.
 
 
-
+  void fetchProducts() async{
+    try {
+      isLoading(true);
+      errMessage('');
+      var products = await productService.fetchProducts();
+      productList.assignAll(products);
+    } catch (e) {
+      errMessage('failed to fetch Products');
+    }finally{
+      isLoading(false);
+    }
+  }
 
 
 

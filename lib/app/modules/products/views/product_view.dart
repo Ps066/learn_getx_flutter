@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:learn_getx/app/modules/products/controllers/product_controller.dart';
 
-class Productviews extends StatelessWidget {
+class ProductView extends StatelessWidget {
 
   //* IMPORTANT
   // before we process we are creating an instance of our controller class 
   // get.put() method is used to build the instance of the class
-  final ProductController productController = Get.find<ProductController>();
+ final ProductController productController = Get.find<ProductController>();
   // Get.put() creates an object (an instance) of the class and stores it for global access throughout your app.
 
   //* IMPORTANT
@@ -21,12 +21,22 @@ class Productviews extends StatelessWidget {
         title: const Text('Product List'),
       ),
       body: Obx((){
+        if(productController.isLoading.value){
+          return const Center(
+            child:  CircularProgressIndicator(),
+          );
+        }
+        if(productController.errMessage.isNotEmpty){
+          return  Center(
+            child:  Text(productController.errMessage.value)
+          );
+        }
         return ListView.builder(
-          itemCount: productController.products.length,
+          itemCount: productController.productList.length,
           itemBuilder: (context, index){
-            final product = productController.products[index];
+            final product = productController.productList[index];
             return ListTile(
-              title: Text(product.name),
+              title: Text(product.title),
               subtitle: Text('\$${product.price.toString()}'),  // here \$ is written to avoide errors on the use of $
               onTap:(){
                 Get.toNamed('/product-details', arguments: product);

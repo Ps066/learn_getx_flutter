@@ -20,7 +20,7 @@ class CartView extends StatelessWidget {
                 itemBuilder: (context, index) {
                   final item = cartController.cartItems[index];
                   return ListTile(
-                    title: Text(item.name),
+                    title: Text(item.title),
                     subtitle: Text('\$${item.price.toString()}'),
                     trailing: IconButton(
                       icon: const Icon(Icons.remove_circle_outline),
@@ -34,7 +34,7 @@ class CartView extends StatelessWidget {
           Obx((){
             return Padding(padding: const EdgeInsets.all(16.0),
             child: Text(
-              'Cart Total: \$${cartController.totalAmount.value.toStringAsFixed(2)}',
+              'Cart Total: \$${cartController.totalAmount.toStringAsFixed(2)}',
               style: const TextStyle(
                 fontSize: 24
               ),
